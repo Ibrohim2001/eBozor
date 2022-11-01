@@ -1,12 +1,12 @@
-import React, { sueState, useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import ProductCard from '../product/ProductCard';
 import './products.css';
-import { useGetProducts } from '../../hooks/useGetProducts';
+import { useGetData } from '../../hooks/useGetData';
 
 
 const Products = () => {
-  const {products, loading} = useGetProducts('https://fakestoreapi.com/products');
+  const {data, loading} = useGetData('https://fakestoreapi.com/products');
 
   // console.log(products)
   
@@ -18,7 +18,7 @@ const Products = () => {
       </div>
       <div className="products_container">
         {
-          products.map((product) => (
+          data.map((product) => (
             <ProductCard key={product.id} product={product}/>
           ))
         }

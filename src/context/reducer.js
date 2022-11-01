@@ -10,9 +10,9 @@ export default (state, action) => {
         liked: [...state.liked, action.payload]
       }
     case "REMOVE_FROM_CART" : 
+      state.cart.splice(action.payload, 1)
       return {
-        ...state,
-        cart: state.cart.filter(item => item.id !== action.payload)
+        cart: state.cart
       }
     case "EMPTY_CART" :
       return {

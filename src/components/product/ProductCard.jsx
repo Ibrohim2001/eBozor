@@ -1,18 +1,12 @@
 import React, { useState, useContext } from 'react';
 import './productcard.css'
 import { GlobalContext } from '../../context/GlobalState';
-import { useGetProducts } from '../../hooks/useGetProducts';
-
+import { Link } from 'react-router-dom';
 
 const ProductCard = ({product}) => {
-  const {products, loading} = useGetProducts('https://fakestoreapi.com/products');
   const { addToCart } = useContext(GlobalContext);
-
-  // const product = products.map(product => product)
-
   const handleCart = () => {
     addToCart(product);
-    console.log(product)
   }
 
   return (
@@ -22,7 +16,7 @@ const ProductCard = ({product}) => {
         </div>
         <div className="product_card_body">
           <p className="price">${product.price}</p>
-          <p className="product_info">{product.description.slice(0, 60)}...</p>
+          <Link to={`/products/${product.id}`} className="product_info">{product.description.slice(0, 60)}...</Link>
         </div>
         <div className="product_card_footer">
           <button className='add_cart' onClick={handleCart}>Add To Cart</button>

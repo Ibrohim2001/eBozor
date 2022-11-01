@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import axios from "axios";
 
-export const useGetProducts = (URL) => {
-  const [products, setProducts] = useState([]);
+export const useGetData = (URL) => {
+  const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -10,7 +10,7 @@ export const useGetProducts = (URL) => {
       setLoading(true);
       axios.get(URL)
           .then(response => {
-            setProducts(response.data);
+            setData(response.data);
             setLoading(false);
             // console.log(response.data);
           }).catch(err => {
@@ -26,6 +26,6 @@ export const useGetProducts = (URL) => {
     return () =>  loadData();
   }, [URL]);
 
-  return {products, loading}
+  return {data, loading}
 
 }
