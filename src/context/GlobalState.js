@@ -4,7 +4,7 @@ import reducer from "./reducer";
 
 const initialState = {
   cart: [],
-  liked: []
+  favourites: []
 }
 
 export const GlobalContext = createContext(initialState)
@@ -18,10 +18,10 @@ export const GlobalState = ({children}) => {
       payload: cart
     });
   }
-  function addToLiked(liked) {
+  function addToFavourites(favourites) {
     dispatch({
-      type: "ADD_TO_LIKED",
-      payload: liked
+      type: "ADD_TO_FAVOURITES",
+      payload: favourites
     });
   }
   function removeFromCart(id) {
@@ -30,9 +30,9 @@ export const GlobalState = ({children}) => {
       payload: id
     });
   }
-  function removeFromLiked(id) {
+  function removeFromFavourites(id) {
     dispatch({
-      type: "REMOVE_FROM_LIKED",
+      type: "REMOVE_FROM_FAVOURITES",
       payload: id
     });
   }
@@ -42,8 +42,8 @@ export const GlobalState = ({children}) => {
     liked: state.liked,
     addToCart,
     removeFromCart,
-    addToLiked,
-    removeFromLiked
+    addToFavourites,
+    removeFromFavourites
   }}>
     {children}
   </GlobalContext.Provider>)

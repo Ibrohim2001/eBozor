@@ -1,16 +1,12 @@
-export default (state, action) => {
+function reducer(state, action) {
   switch(action.type) {
     case "ADD_TO_CART" :
       return {
         ...state,
         cart: [...state.cart, action.payload]
       }
-    case "ADD_TO_LIKED" : 
-      return {
-        liked: [...state.liked, action.payload]
-      }
     case "REMOVE_FROM_CART" : 
-      state.cart.splice(action.payload, 1)
+      state.cart.splice(action.payload, 1);
       return {
         cart: state.cart
       }
@@ -18,8 +14,13 @@ export default (state, action) => {
       return {
         cart: []
       }
+    case "ADD_TO_FAVOURITES" :
+      return {
+        ...state,
+        favourites: [...state.favourites, action.payload]
+      }
     case "REMOVE_FROM_LIKED" :
-      state.liked.splice(action.id, 1);
+      state.liked.splice(action.payload, 1);
       return {
         liked: state.liked
       }
@@ -27,3 +28,5 @@ export default (state, action) => {
     return state
   }
 }
+
+export default reducer

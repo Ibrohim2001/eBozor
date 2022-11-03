@@ -8,10 +8,9 @@ import './header.css';
 import { GlobalContext } from '../../context/GlobalState';
 
 const Header = () => {
-  const {currentLocation, setCurrentLocation} = useState(true);
   const location = useLocation();
   const {cart} = useContext(GlobalContext);
-  const {liked} = useContext(GlobalContext);
+  const {favourites} = useContext(GlobalContext);
   const [isVisible, toggle] = useToggle();
   const [scroll, setScroll] = useState(false);
 
@@ -37,22 +36,24 @@ const Header = () => {
           <li className='nav_item' onClick={toggle}>
             {
               location.pathname === '/login' ? 
-                <Link to='/login'>
+                <Link to='/'>
                   <BsPerson/>
                   <span>Login</span>
                 </Link> 
                 : 
-                <Link to='/sign-up'>
+                <Link to='/'>
                   <BsPerson/>
                   <span>Sign Up</span>
                 </Link>
             }
           </li>
           <li className='nav_item' onClick={toggle}>
-            <Link to='/liked'>
+            <Link to='/'>
               <BsHeart/>
               <span>Liked</span>
-              {/* <span className='nav_count'>{liked.length < 0 ? '0' : `${liked.length}`}</span> */}
+              <span className='nav_count'>
+                0
+              </span>
             </Link>
           </li>
           <li className='nav_item' onClick={toggle}>
@@ -60,7 +61,7 @@ const Header = () => {
               <BsCart3/>
               <span>Cart</span>
               <span className='nav_count'>
-                {cart.length === null ? '0' : `${cart.length}`}
+                {cart.length && `${cart.length}`}
               </span>
             </Link>
           </li>

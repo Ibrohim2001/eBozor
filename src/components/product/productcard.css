@@ -32,18 +32,32 @@
   height: 50px;
 }
 .product_card_footer {
-  width: 90%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   margin: 0 auto;
+  padding: 10px;
 }
 .add_cart {
-  width: 100%;
-  margin: 0 auto;
+  width: 220px;
   padding: 0.5rem 0;
   color: #fff;
   background: linear-gradient(96.78deg, #F64D4D -57.09%, #4D5EF6 101.17%);
   box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.12);
   border: none;
   font-size: 1rem;
+  cursor: pointer;
+}
+.add_liked {
+  width: 40px;
+  height: 35px;
+  display: grid;
+  place-content: center;
+  color: #FF4343;
+  background-color: transparent;
+  border: none;
+  font-size: 1.5rem;
   cursor: pointer;
 }
 
